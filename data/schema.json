@@ -1,0 +1,393 @@
+{
+  "land_events": {
+    "rows": 27,
+    "fields": [
+      "admission_status",
+      "area_basis",
+      "area_unit",
+      "area_value",
+      "category",
+      "checked_at",
+      "collection",
+      "date_precision",
+      "district",
+      "event_end",
+      "event_raw",
+      "event_start",
+      "facts",
+      "first_recorded",
+      "id",
+      "inclusion_basis",
+      "interpretation",
+      "land_use",
+      "name",
+      "official_publisher",
+      "period_group",
+      "plot_ratio",
+      "price_basis",
+      "price_unit",
+      "proposed_price",
+      "publication_date",
+      "reference",
+      "source_tier",
+      "source_url",
+      "stage",
+      "starting_precision",
+      "starting_price",
+      "supplement_url",
+      "theme",
+      "transaction_price",
+      "verification",
+      "verification_group",
+      "window",
+      "winner"
+    ],
+    "source": {
+      "label": "当前第一方入库事件",
+      "sourceType": "reviewed-public-source-snapshot",
+      "executedAt": "2026-10-12T01:03:39Z",
+      "period": "2026年9月基准；10月1–12日衔接",
+      "timezone": "Asia/Shanghai",
+      "filters": [
+        "全区全用途；交易中心第一方发布/可追溯索引唯一入库",
+        "媒体只能补充同地块同事件，不作为独立入库依据",
+        "非全市全量；旧口径记录不计当前"
+      ],
+      "metricDefinitions": [
+        {
+          "label": "当前事件",
+          "definition": "有交易中心第一方准入依据的公开信息节点；同一地块可多节点，不等于成交宗数。"
+        }
+      ],
+      "caveats": [
+        "官方搜索索引直开超时，检索服务返回其第一方索引缓存；仅保留标题、公告号和索引日期，不当作完整正文。",
+        "交易录播只证明存在交易活动，不独立证明成交及成交额。",
+        "缺少第一方证据的金额、面积、竞得人、地块映射已清空；原值保留在旧版快照。",
+        "没有当前收录不等于该区或该用途没有事件。"
+      ],
+      "evidenceFlow": [
+        {
+          "title": "准入",
+          "detail": "逐条复核原79条；只有交易中心自己发布的页面或可追溯索引进入当前主库。"
+        },
+        {
+          "title": "归档",
+          "detail": "55条退出当前计数，保留原记录、来源和排除原因；同一工作簿与页面可查看。"
+        },
+        {
+          "title": "补充",
+          "detail": "媒体只允许关联已获准入依据的同地块同事件；不得代填官方披露字段。"
+        }
+      ],
+      "sourceRequests": [
+        {
+          "at": "2026-10-09T02:17:35Z",
+          "method": "open",
+          "url": "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/",
+          "result": "首页可读，主体为上海市土地交易事务中心 / 上海市土地交易市场"
+        },
+        {
+          "at": "2026-10-09T02:18:03Z",
+          "method": "search_query",
+          "queries": [
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-09\" \"2026\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"华新镇25-01\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"117a-09\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"JSC1-0901\""
+          ],
+          "result": "返回官方索引缓存；详情直接打开失败，未将摘要声明为正文"
+        },
+        {
+          "at": "2026-10-12T01:03:39Z",
+          "method": "official-index search cache + direct page retrieval",
+          "url": "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=2026",
+          "queries": [
+            "2026-10-09/10/11/12 公告/变更/终止/二级市场",
+            "2026 第076号 第078号 第082号"
+          ],
+          "result": "官方索引新增076/078结果公示，历史补录082出让公告；详情未取得。索引直开超时/502，动态栏目仅框架，未穷尽分页。"
+        }
+      ]
+    },
+    "methods": [
+      {
+        "language": "text",
+        "code": "在原79条稳定ID中逐条筛选交易中心第一方同一事件证据，未额外扩展历史；当前与旧口径归档分离，标题级字段与正文级事实分离。"
+      }
+    ]
+  },
+  "source_coverage": {
+    "rows": 18,
+    "fields": [
+      "checked_at",
+      "count",
+      "district",
+      "domains",
+      "id",
+      "limitations",
+      "method",
+      "scope",
+      "source_url",
+      "status"
+    ],
+    "source": {
+      "label": "唯一来源覆盖说明",
+      "sourceType": "reviewed-public-source-snapshot",
+      "executedAt": "2026-10-12T01:03:39Z",
+      "period": "2026年9月基准；10月1–12日衔接",
+      "timezone": "Asia/Shanghai",
+      "filters": [
+        "全区全用途；交易中心第一方发布/可追溯索引唯一入库",
+        "媒体只能补充同地块同事件，不作为独立入库依据",
+        "非全市全量；旧口径记录不计当前"
+      ],
+      "metricDefinitions": [
+        {
+          "label": "当前事件",
+          "definition": "有交易中心第一方准入依据的公开信息节点；同一地块可多节点，不等于成交宗数。"
+        }
+      ],
+      "caveats": [
+        "官方搜索索引直开超时，检索服务返回其第一方索引缓存；仅保留标题、公告号和索引日期，不当作完整正文。",
+        "交易录播只证明存在交易活动，不独立证明成交及成交额。",
+        "缺少第一方证据的金额、面积、竞得人、地块映射已清空；原值保留在旧版快照。",
+        "没有当前收录不等于该区或该用途没有事件。"
+      ],
+      "evidenceFlow": [
+        {
+          "title": "准入",
+          "detail": "逐条复核原79条；只有交易中心自己发布的页面或可追溯索引进入当前主库。"
+        },
+        {
+          "title": "归档",
+          "detail": "55条退出当前计数，保留原记录、来源和排除原因；同一工作簿与页面可查看。"
+        },
+        {
+          "title": "补充",
+          "detail": "媒体只允许关联已获准入依据的同地块同事件；不得代填官方披露字段。"
+        }
+      ],
+      "sourceRequests": [
+        {
+          "at": "2026-10-09T02:17:35Z",
+          "method": "open",
+          "url": "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/",
+          "result": "首页可读，主体为上海市土地交易事务中心 / 上海市土地交易市场"
+        },
+        {
+          "at": "2026-10-09T02:18:03Z",
+          "method": "search_query",
+          "queries": [
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-09\" \"2026\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"华新镇25-01\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"117a-09\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"JSC1-0901\""
+          ],
+          "result": "返回官方索引缓存；详情直接打开失败，未将摘要声明为正文"
+        },
+        {
+          "at": "2026-10-12T01:03:39Z",
+          "method": "official-index search cache + direct page retrieval",
+          "url": "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=2026",
+          "queries": [
+            "2026-10-09/10/11/12 公告/变更/终止/二级市场",
+            "2026 第076号 第078号 第082号"
+          ],
+          "result": "官方索引新增076/078结果公示，历史补录082出让公告；详情未取得。索引直开超时/502，动态栏目仅框架，未穷尽分页。"
+        }
+      ]
+    },
+    "methods": [
+      {
+        "language": "text",
+        "code": "在原79条稳定ID中逐条筛选交易中心第一方同一事件证据，未额外扩展历史；当前与旧口径归档分离，标题级字段与正文级事实分离。"
+      }
+    ]
+  },
+  "field_definitions": {
+    "rows": 47,
+    "fields": [
+      "applies",
+      "field",
+      "key",
+      "meaning",
+      "missing",
+      "type",
+      "update"
+    ],
+    "source": {
+      "label": "现行字段与日期口径",
+      "sourceType": "reviewed-public-source-snapshot",
+      "executedAt": "2026-10-09T02:23:12.879014Z",
+      "period": "2026年9月基准；10月1–9日衔接",
+      "timezone": "Asia/Shanghai",
+      "filters": [
+        "全区全用途；交易中心第一方发布/可追溯索引唯一入库",
+        "媒体只能补充同地块同事件，不作为独立入库依据",
+        "非全市全量；旧口径记录不计当前"
+      ],
+      "metricDefinitions": [
+        {
+          "label": "当前事件",
+          "definition": "有交易中心第一方准入依据的公开信息节点；同一地块可多节点，不等于成交宗数。"
+        }
+      ],
+      "caveats": [
+        "官方搜索索引直开超时，检索服务返回其第一方索引缓存；仅保留标题、公告号和索引日期，不当作完整正文。",
+        "交易录播只证明存在交易活动，不独立证明成交及成交额。",
+        "缺少第一方证据的金额、面积、竞得人、地块映射已清空；原值保留在旧版快照。",
+        "没有当前收录不等于该区或该用途没有事件。"
+      ],
+      "evidenceFlow": [
+        {
+          "title": "准入",
+          "detail": "逐条复核原79条；只有交易中心自己发布的页面或可追溯索引进入当前主库。"
+        },
+        {
+          "title": "归档",
+          "detail": "55条退出当前计数，保留原记录、来源和排除原因；同一工作簿与页面可查看。"
+        },
+        {
+          "title": "补充",
+          "detail": "媒体只允许关联已获准入依据的同地块同事件；不得代填官方披露字段。"
+        }
+      ],
+      "sourceRequests": [
+        {
+          "at": "2026-10-09T02:17:35Z",
+          "method": "open",
+          "url": "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/",
+          "result": "首页可读，主体为上海市土地交易事务中心 / 上海市土地交易市场"
+        },
+        {
+          "at": "2026-10-09T02:18:03Z",
+          "method": "search_query",
+          "queries": [
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-09\" \"2026\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"华新镇25-01\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"117a-09\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"JSC1-0901\""
+          ],
+          "result": "返回官方索引缓存；详情直接打开失败，未将摘要声明为正文"
+        }
+      ]
+    },
+    "methods": [
+      {
+        "language": "text",
+        "code": "在原79条稳定ID中逐条筛选交易中心第一方同一事件证据，未额外扩展历史；当前与旧口径归档分离，标题级字段与正文级事实分离。"
+      }
+    ]
+  },
+  "unverified_leads": {
+    "rows": 55,
+    "fields": [
+      "admission_status",
+      "archive_detail",
+      "archive_reason",
+      "archive_status",
+      "archived_at",
+      "area_basis",
+      "area_unit",
+      "area_value",
+      "category",
+      "caveat",
+      "checked_at",
+      "collection",
+      "date_precision",
+      "district",
+      "event_end",
+      "event_raw",
+      "event_start",
+      "facts",
+      "first_recorded",
+      "id",
+      "inclusion_basis",
+      "interpretation",
+      "land_use",
+      "name",
+      "period_group",
+      "plot_ratio",
+      "price_basis",
+      "price_unit",
+      "proposed_price",
+      "publication_date",
+      "reference",
+      "source_tier",
+      "source_url",
+      "stage",
+      "starting_precision",
+      "starting_price",
+      "supplement_url",
+      "theme",
+      "transaction_price",
+      "verification",
+      "verification_group",
+      "window",
+      "winner"
+    ],
+    "source": {
+      "label": "旧口径归档（不计当前）",
+      "sourceType": "reviewed-public-source-snapshot",
+      "executedAt": "2026-10-09T02:23:12.879014Z",
+      "period": "2026年9月基准；10月1–9日衔接",
+      "timezone": "Asia/Shanghai",
+      "filters": [
+        "全区全用途；交易中心第一方发布/可追溯索引唯一入库",
+        "媒体只能补充同地块同事件，不作为独立入库依据",
+        "非全市全量；旧口径记录不计当前"
+      ],
+      "metricDefinitions": [
+        {
+          "label": "当前事件",
+          "definition": "有交易中心第一方准入依据的公开信息节点；同一地块可多节点，不等于成交宗数。"
+        }
+      ],
+      "caveats": [
+        "官方搜索索引直开超时，检索服务返回其第一方索引缓存；仅保留标题、公告号和索引日期，不当作完整正文。",
+        "交易录播只证明存在交易活动，不独立证明成交及成交额。",
+        "缺少第一方证据的金额、面积、竞得人、地块映射已清空；原值保留在旧版快照。",
+        "没有当前收录不等于该区或该用途没有事件。"
+      ],
+      "evidenceFlow": [
+        {
+          "title": "准入",
+          "detail": "逐条复核原79条；只有交易中心自己发布的页面或可追溯索引进入当前主库。"
+        },
+        {
+          "title": "归档",
+          "detail": "55条退出当前计数，保留原记录、来源和排除原因；同一工作簿与页面可查看。"
+        },
+        {
+          "title": "补充",
+          "detail": "媒体只允许关联已获准入依据的同地块同事件；不得代填官方披露字段。"
+        }
+      ],
+      "sourceRequests": [
+        {
+          "at": "2026-10-09T02:17:35Z",
+          "method": "open",
+          "url": "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/",
+          "result": "首页可读，主体为上海市土地交易事务中心 / 上海市土地交易市场"
+        },
+        {
+          "at": "2026-10-09T02:18:03Z",
+          "method": "search_query",
+          "queries": [
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-09\" \"2026\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"华新镇25-01\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"117a-09\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"JSC1-0901\""
+          ],
+          "result": "返回官方索引缓存；详情直接打开失败，未将摘要声明为正文"
+        }
+      ]
+    },
+    "methods": [
+      {
+        "language": "text",
+        "code": "在原79条稳定ID中逐条筛选交易中心第一方同一事件证据，未额外扩展历史；当前与旧口径归档分离，标题级字段与正文级事实分离。"
+      }
+    ]
+  }
+}
