@@ -19,16 +19,6 @@ export function filterRecords(rows, filters = {}) {
   }).sort((a,b) => String(b.publication_date ?? '').localeCompare(String(a.publication_date ?? '')) || a.id.localeCompare(b.id));
 }
 
-export function toCSV(rows) {
-  const keys = [...new Set(rows.flatMap(row => Object.keys(row)))];
-  const cell = value => {
-    let text = value == null ? '' : typeof value === 'object' ? JSON.stringify(value) : String(value);
-    if (/^[\s]*[=+@-]/.test(text)) text = "'" + text;
-    return '"' + text.replaceAll('"','""') + '"';
-  };
-  return '\uFEFF' + [keys.map(cell).join(','), ...rows.map(row => keys.map(key => cell(row[key])).join(','))].join('\r\n') + '\r\n';
-}
-
 export function validateRecords(current, archive) {
   const ids = new Set();
   for (const [rows, archived] of [[current,false],[archive,true]]) {

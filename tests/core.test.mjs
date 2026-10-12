@@ -39,13 +39,6 @@ test('validation rejects duplicate event IDs and unlabelled archive rows', () =>
   assert.throws(() => core.validateRecords(current,invalid), /归档/);
 });
 
-test('export preserves missing values and protects spreadsheet formula cells', () => {
-  assert.ok(core, 'CSV exporter exists');
-  const csv = core.toCSV([{标题:'=1+1',金额:null,备注:'中文,"引号"\n换行',零:0}]);
-  assert.ok(csv.includes('"\'=1+1"'));
-  assert.ok(csv.includes('"","中文,""引号""\n换行","0"'));
-});
-
 test('HTML escapes untrusted titles and URL allowlist blocks scripts', () => {
   assert.ok(core, 'safe rendering utilities exist');
   assert.equal(core.escapeHTML('<script>"&'), '&lt;script&gt;&quot;&amp;');

@@ -10,11 +10,24 @@ execFileSync(process.execPath,['scripts/build.mjs'],{cwd:project});
 const root=resolve(project,'dist');
 const input=JSON.parse(await readFile(resolve(project,'data/snapshot.json'),'utf8'));
 
-test('all four exported queries and the complete snapshot preserve every field',async()=>{
-  assert.deepEqual(JSON.parse(await readFile(resolve(root,'exports/snapshot.json'),'utf8')),input);
-  for(const [key,query] of Object.entries(input.queries)) {
-    assert.deepEqual(JSON.parse(await readFile(resolve(root,`exports/${key}.json`),'utf8')),query.rows);
-    assert.ok((await readFile(resolve(root,`exports/${key}.csv`),'utf8')).startsWith('\uFEFF'));
+test('reading-only output has no download controls or standalone JSON/CSV files',async()=>{
+  async function walk(dir){const files=[];for(const entry of await readdir(dir,{withFileTypes:true})){const path=resolve(dir,entry.name);files.push(...entry.isDirectory()?await walk(path):[path]);}return files;}
+  assert.equal(await stat(resolve(root,'exports')).catch(()=>null),null);
+  for(const file of await walk(root)) {
+    assert.ok(!/\.(json|csv)$/.test(file),`standalone data file: ${file}`);
+    if(file.endsWith('.html')) {
+      const html=await readFile(file,'utf8');
+      assert.ok(!/\sdownload(?:[\s=>])|\/exports\/|导出|下载/.test(html),`download UI: ${file}`);
+    }
+  }
+});
+
+test('inline filter records preserve the complete current and archived rows',async()=>{
+  const decode=text=>text.replace(/&(amp|quot|#39|lt|gt);/g,(_,entity)=>({amp:'&',quot:'"','#39':"'",lt:'<',gt:'>'}[entity]));
+  for(const [page,key] of [['index.html','land_events'],['archive/index.html','unverified_leads']]) {
+    const html=await readFile(resolve(root,page),'utf8');
+    const rows=[...html.matchAll(/data-record="([^"]*)"/g)].map(match=>JSON.parse(decode(match[1])));
+    assert.deepEqual(rows.sort((a,b)=>a.id.localeCompare(b.id)),[...input.queries[key].rows].sort((a,b)=>a.id.localeCompare(b.id)));
   }
 });
 
@@ -32,7 +45,7 @@ test('every event has a shareable static detail and archive exclusion notice',as
   assert.equal(new Set(ids).size,82);
 });
 
-test('all internal page, asset and export links resolve in the portable output',async()=>{
+test('all internal page and asset links resolve in the portable output',async()=>{
   async function walk(dir){const files=[];for(const entry of await readdir(dir,{withFileTypes:true})){const path=resolve(dir,entry.name);files.push(...entry.isDirectory()?await walk(path):[path]);}return files;}
   for(const file of (await walk(root)).filter(path=>path.endsWith('.html'))){
     const html=await readFile(file,'utf8');
