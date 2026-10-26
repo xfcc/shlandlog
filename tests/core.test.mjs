@@ -7,11 +7,11 @@ const current = snapshot.queries.land_events.rows;
 const archive = snapshot.queries.unverified_leads.rows;
 const core = await import('../src/core.mjs').catch(() => null);
 
-test('weekly snapshot preserves 39 current events and 55 excluded archive rows', () => {
-  assert.equal(current.length, 39);
+test('weekly snapshot preserves 50 current events and 55 excluded archive rows', () => {
+  assert.equal(current.length, 50);
   assert.equal(archive.length, 55);
   assert.equal(current.filter(r => r.period_group === '9月基准').length, 22);
-  assert.equal(current.filter(r => r.period_group === '10月衔接').length, 17);
+  assert.equal(current.filter(r => r.period_group === '10月衔接').length, 28);
   assert.ok(current.every(r => r.transaction_price === null));
   assert.ok(current.every(r => r.event_start === null));
 });

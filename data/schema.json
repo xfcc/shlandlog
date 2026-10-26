@@ -1,6 +1,6 @@
 {
   "land_events": {
-    "rows": 39,
+    "rows": 50,
     "fields": [
       "admission_status",
       "area_basis",
@@ -45,113 +45,8 @@
     "source": {
       "label": "当前第一方入库事件",
       "sourceType": "reviewed-public-source-snapshot",
-      "executedAt": "2026-10-19T00:58:24Z",
-      "period": "2026年9月基准；10月1–19日检索窗口（索引证据最新发布日期10月17日）",
-      "timezone": "Asia/Shanghai",
-      "filters": [
-        "全区全用途；交易中心第一方发布/可追溯索引唯一入库",
-        "媒体只能补充同地块同事件，不作为独立入库依据",
-        "非全市全量；旧口径记录不计当前"
-      ],
-      "metricDefinitions": [
-        {
-          "label": "当前事件",
-          "definition": "有交易中心第一方准入依据的公开信息节点；同一地块可多节点，不等于成交宗数。"
-        }
-      ],
-      "caveats": [
-        "官方搜索索引直开超时，检索服务返回其第一方索引缓存；仅保留标题、公告号和索引日期，不当作完整正文。",
-        "交易录播只证明存在交易活动，不独立证明成交及成交额。",
-        "缺少第一方证据的金额、面积、竞得人、地块映射已清空；原值保留在旧版快照。",
-        "没有当前收录不等于该区或该用途没有事件。",
-        "本轮检索尝试至2026-10-19（上海时间），本轮取得索引证据的最新发布日期为2026-10-17；两者不等同。官网索引直开超时，土地交易、市场观察、二级市场栏目仅框架，未穷尽分页；公告详情正文未取得。未检出不表示无事件，变更、终止、二级市场等仍有覆盖缺口。"
-      ],
-      "evidenceFlow": [
-        {
-          "title": "准入",
-          "detail": "逐条复核原79条；只有交易中心自己发布的页面或可追溯索引进入当前主库。"
-        },
-        {
-          "title": "归档",
-          "detail": "55条退出当前计数，保留原记录、来源和排除原因；同一工作簿与页面可查看。"
-        },
-        {
-          "title": "补充",
-          "detail": "媒体只允许关联已获准入依据的同地块同事件；不得代填官方披露字段。"
-        }
-      ],
-      "sourceRequests": [
-        {
-          "at": "2026-10-09T02:17:35Z",
-          "method": "open",
-          "url": "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/",
-          "result": "首页可读，主体为上海市土地交易事务中心 / 上海市土地交易市场"
-        },
-        {
-          "at": "2026-10-09T02:18:03Z",
-          "method": "search_query",
-          "queries": [
-            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-09\" \"2026\"",
-            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"华新镇25-01\"",
-            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"117a-09\"",
-            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"JSC1-0901\""
-          ],
-          "result": "返回官方索引缓存；详情直接打开失败，未将摘要声明为正文"
-        },
-        {
-          "at": "2026-10-12T01:03:39Z",
-          "method": "official-index search cache + direct page retrieval",
-          "url": "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=2026",
-          "queries": [
-            "2026-10-09/10/11/12 公告/变更/终止/二级市场",
-            "2026 第076号 第078号 第082号"
-          ],
-          "result": "官方索引新增076/078结果公示，历史补录082出让公告；详情未取得。索引直开超时/502，动态栏目仅框架，未穷尽分页。"
-        },
-        {
-          "at": "2026-10-19T00:56:31Z",
-          "method": "official-index search cache + direct page retrieval",
-          "url": "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=2026",
-          "queries": [
-            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-10\"",
-            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-09\"",
-            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-09\" \"结果公示\"",
-            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-10\" \"转让\""
-          ],
-          "result": "取得12条新收录节点的第一方索引缓存：10月10条、9月2条；未取得公告正文。索引直开超时，三个动态栏目仅框架。最新索引发布日期10月17日，不声明覆盖至10月19日。"
-        }
-      ]
-    },
-    "methods": [
-      {
-        "language": "text",
-        "code": "在原79条稳定ID中逐条筛选交易中心第一方同一事件证据，未额外扩展历史；当前与旧口径归档分离，标题级字段与正文级事实分离。"
-      },
-      {
-        "language": "text",
-        "code": "本轮保持全部既有事件、稳定ID及归档记录不变；追加第一方索引节点，未知字段保留null；按当前台账重算区级数量，不作为逐区全面核验。"
-      }
-    ]
-  },
-  "source_coverage": {
-    "rows": 19,
-    "fields": [
-      "checked_at",
-      "count",
-      "district",
-      "domains",
-      "id",
-      "limitations",
-      "method",
-      "scope",
-      "source_url",
-      "status"
-    ],
-    "source": {
-      "label": "唯一来源覆盖说明",
-      "sourceType": "reviewed-public-source-snapshot",
-      "executedAt": "2026-10-19T00:58:24Z",
-      "period": "2026年9月基准；10月1–19日检索窗口（索引证据最新发布日期10月17日）",
+      "executedAt": "2026-10-26T01:06:46Z",
+      "period": "2026年9月基准；10月1–26日检索窗口（索引证据最新发布日期10月23日）",
       "timezone": "Asia/Shanghai",
       "filters": [
         "全区全用途；交易中心第一方发布/可追溯索引唯一入库",
@@ -170,7 +65,7 @@
         "缺少第一方证据的金额、面积、竞得人、地块映射已清空；原值保留在旧版快照。",
         "没有当前收录不等于该区或该用途没有事件。",
         "本轮检索尝试至2026-10-19（上海时间），本轮取得索引证据的最新发布日期为2026-10-17；两者不等同。官网索引直开超时，土地交易、市场观察、二级市场栏目仅框架，未穷尽分页；公告详情正文未取得。未检出不表示无事件，变更、终止、二级市场等仍有覆盖缺口。",
-        "交易排期API候选页面未取得其与交易事务中心官方发布体系的明确关联证据，本轮不准入；后续需先核实机构关联及来源链。"
+        "本轮检索尝试至2026-10-26 09:05（上海时间），取得索引证据的最新发布日期为2026-10-23；两者不等同。新增11条中10条来自官方搜索索引缓存，1条来自可直接读取的官方录播列表；均未核验公告全文或视频成交事实。站内检索直开失败，动态栏目与分页覆盖不完整；10月18–20日及24–26日、变更、终止、二级市场等仍有覆盖缺口。未检出不表示无事件。"
       ],
       "evidenceFlow": [
         {
@@ -225,6 +120,38 @@
             "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-10\" \"转让\""
           ],
           "result": "取得12条新收录节点的第一方索引缓存：10月10条、9月2条；未取得公告正文。索引直开超时，三个动态栏目仅框架。最新索引发布日期10月17日，不声明覆盖至10月19日。"
+        },
+        {
+          "at": "2026-10-26T01:05:25Z",
+          "method": "official-index search cache + direct recording index",
+          "url": "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=2026",
+          "queries": [
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-10\" \"上海\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"10月\" \"出让\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"10-18\" \"2026\" -inurl:jy",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-10-19\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-10-20\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-10-21\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-10-24\" -inurl:/jy/",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-10-25\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-10-26\" -inurl:/jy/",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"第087号\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"第088号\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"第089号\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"第090号\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"第091号\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"变更\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"终止\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"预公告\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"市场新闻\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"变更公告\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"预告\" \"2026\" -inurl:jy",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"中止\" \"2026\" -inurl:jy",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"现场交易活动安排\" \"077\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx \"松江区\" \"2026-10\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx \"浦东新区\" \"2026-10\""
+          ],
+          "result": "本轮检索尝试至2026-10-26 09:05（上海时间），取得索引证据的最新发布日期为2026-10-23；两者不等同。新增11条中10条来自官方搜索索引缓存，1条来自可直接读取的官方录播列表；均未核验公告全文或视频成交事实。站内检索直开失败，动态栏目与分页覆盖不完整；10月18–20日及24–26日、变更、终止、二级市场等仍有覆盖缺口。未检出不表示无事件。"
         }
       ]
     },
@@ -236,6 +163,153 @@
       {
         "language": "text",
         "code": "本轮保持全部既有事件、稳定ID及归档记录不变；追加第一方索引节点，未知字段保留null；按当前台账重算区级数量，不作为逐区全面核验。"
+      },
+      {
+        "language": "text",
+        "code": "保留既有39条事件及55条归档原样；追加11条本期公开节点。记录官方搜索缓存与直接可读索引的核验差异，未知数值留null；不计全市总量，不推断成交。"
+      }
+    ]
+  },
+  "source_coverage": {
+    "rows": 20,
+    "fields": [
+      "checked_at",
+      "count",
+      "district",
+      "domains",
+      "id",
+      "limitations",
+      "method",
+      "scope",
+      "source_url",
+      "status"
+    ],
+    "source": {
+      "label": "唯一来源覆盖说明",
+      "sourceType": "reviewed-public-source-snapshot",
+      "executedAt": "2026-10-26T01:06:46Z",
+      "period": "2026年9月基准；10月1–26日检索窗口（索引证据最新发布日期10月23日）",
+      "timezone": "Asia/Shanghai",
+      "filters": [
+        "全区全用途；交易中心第一方发布/可追溯索引唯一入库",
+        "媒体只能补充同地块同事件，不作为独立入库依据",
+        "非全市全量；旧口径记录不计当前"
+      ],
+      "metricDefinitions": [
+        {
+          "label": "当前事件",
+          "definition": "有交易中心第一方准入依据的公开信息节点；同一地块可多节点，不等于成交宗数。"
+        }
+      ],
+      "caveats": [
+        "官方搜索索引直开超时，检索服务返回其第一方索引缓存；仅保留标题、公告号和索引日期，不当作完整正文。",
+        "交易录播只证明存在交易活动，不独立证明成交及成交额。",
+        "缺少第一方证据的金额、面积、竞得人、地块映射已清空；原值保留在旧版快照。",
+        "没有当前收录不等于该区或该用途没有事件。",
+        "本轮检索尝试至2026-10-19（上海时间），本轮取得索引证据的最新发布日期为2026-10-17；两者不等同。官网索引直开超时，土地交易、市场观察、二级市场栏目仅框架，未穷尽分页；公告详情正文未取得。未检出不表示无事件，变更、终止、二级市场等仍有覆盖缺口。",
+        "交易排期API候选页面未取得其与交易事务中心官方发布体系的明确关联证据，本轮不准入；后续需先核实机构关联及来源链。",
+        "本轮检索尝试至2026-10-26 09:05（上海时间），取得索引证据的最新发布日期为2026-10-23；两者不等同。新增11条中10条来自官方搜索索引缓存，1条来自可直接读取的官方录播列表；均未核验公告全文或视频成交事实。站内检索直开失败，动态栏目与分页覆盖不完整；10月18–20日及24–26日、变更、终止、二级市场等仍有覆盖缺口。未检出不表示无事件。"
+      ],
+      "evidenceFlow": [
+        {
+          "title": "准入",
+          "detail": "逐条复核原79条；只有交易中心自己发布的页面或可追溯索引进入当前主库。"
+        },
+        {
+          "title": "归档",
+          "detail": "55条退出当前计数，保留原记录、来源和排除原因；同一工作簿与页面可查看。"
+        },
+        {
+          "title": "补充",
+          "detail": "媒体只允许关联已获准入依据的同地块同事件；不得代填官方披露字段。"
+        }
+      ],
+      "sourceRequests": [
+        {
+          "at": "2026-10-09T02:17:35Z",
+          "method": "open",
+          "url": "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/",
+          "result": "首页可读，主体为上海市土地交易事务中心 / 上海市土地交易市场"
+        },
+        {
+          "at": "2026-10-09T02:18:03Z",
+          "method": "search_query",
+          "queries": [
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-09\" \"2026\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"华新镇25-01\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"117a-09\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"JSC1-0901\""
+          ],
+          "result": "返回官方索引缓存；详情直接打开失败，未将摘要声明为正文"
+        },
+        {
+          "at": "2026-10-12T01:03:39Z",
+          "method": "official-index search cache + direct page retrieval",
+          "url": "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=2026",
+          "queries": [
+            "2026-10-09/10/11/12 公告/变更/终止/二级市场",
+            "2026 第076号 第078号 第082号"
+          ],
+          "result": "官方索引新增076/078结果公示，历史补录082出让公告；详情未取得。索引直开超时/502，动态栏目仅框架，未穷尽分页。"
+        },
+        {
+          "at": "2026-10-19T00:56:31Z",
+          "method": "official-index search cache + direct page retrieval",
+          "url": "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=2026",
+          "queries": [
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-10\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-09\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-09\" \"结果公示\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-10\" \"转让\""
+          ],
+          "result": "取得12条新收录节点的第一方索引缓存：10月10条、9月2条；未取得公告正文。索引直开超时，三个动态栏目仅框架。最新索引发布日期10月17日，不声明覆盖至10月19日。"
+        },
+        {
+          "at": "2026-10-26T01:05:25Z",
+          "method": "official-index search cache + direct recording index",
+          "url": "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=2026",
+          "queries": [
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-10\" \"上海\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"10月\" \"出让\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"10-18\" \"2026\" -inurl:jy",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-10-19\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-10-20\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-10-21\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-10-24\" -inurl:/jy/",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-10-25\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026-10-26\" -inurl:/jy/",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"第087号\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"第088号\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"第089号\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"第090号\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"第091号\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"变更\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"终止\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"预公告\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"市场新闻\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"变更公告\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"预告\" \"2026\" -inurl:jy",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"中止\" \"2026\" -inurl:jy",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ \"2026\" \"现场交易活动安排\" \"077\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx \"松江区\" \"2026-10\"",
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx \"浦东新区\" \"2026-10\""
+          ],
+          "result": "本轮检索尝试至2026-10-26 09:05（上海时间），取得索引证据的最新发布日期为2026-10-23；两者不等同。新增11条中10条来自官方搜索索引缓存，1条来自可直接读取的官方录播列表；均未核验公告全文或视频成交事实。站内检索直开失败，动态栏目与分页覆盖不完整；10月18–20日及24–26日、变更、终止、二级市场等仍有覆盖缺口。未检出不表示无事件。"
+        }
+      ]
+    },
+    "methods": [
+      {
+        "language": "text",
+        "code": "在原79条稳定ID中逐条筛选交易中心第一方同一事件证据，未额外扩展历史；当前与旧口径归档分离，标题级字段与正文级事实分离。"
+      },
+      {
+        "language": "text",
+        "code": "本轮保持全部既有事件、稳定ID及归档记录不变；追加第一方索引节点，未知字段保留null；按当前台账重算区级数量，不作为逐区全面核验。"
+      },
+      {
+        "language": "text",
+        "code": "保留既有39条事件及55条归档原样；追加11条本期公开节点。记录官方搜索缓存与直接可读索引的核验差异，未知数值留null；不计全市总量，不推断成交。"
       }
     ]
   },

@@ -42,7 +42,7 @@ test('every event has a shareable static detail and archive exclusion notice',as
       ids.push(row.id);
     }
   }
-  assert.equal(new Set(ids).size,94);
+  assert.equal(new Set(ids).size,105);
 });
 
 test('all internal page and asset links resolve in the portable output',async()=>{
