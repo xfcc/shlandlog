@@ -7,11 +7,11 @@ const current = snapshot.queries.land_events.rows;
 const archive = snapshot.queries.unverified_leads.rows;
 const core = await import('../src/core.mjs').catch(() => null);
 
-test('weekly snapshot preserves 50 current events and 55 excluded archive rows', () => {
-  assert.equal(current.length, 50);
+test('weekly snapshot preserves 62 current events and 55 excluded archive rows', () => {
+  assert.equal(current.length, 62);
   assert.equal(archive.length, 55);
   assert.equal(current.filter(r => r.period_group === '9月基准').length, 22);
-  assert.equal(current.filter(r => r.period_group === '10月衔接').length, 28);
+  assert.equal(current.filter(r => r.period_group === '10月衔接').length, 40);
   assert.ok(current.every(r => r.transaction_price === null));
   assert.ok(current.every(r => r.event_start === null));
 });
@@ -54,4 +54,11 @@ test('invalid calendar dates fail instead of silently rolling into another month
 test('event detail routes cannot collide between current and archived IDs', () => {
   const invalid=structuredClone(archive); invalid[0].id=current[0].id;
   assert.throws(()=>core.validateRecords(current,invalid),/重复/);
+});
+
+test('first-party market information keeps units and textual plot-ratio constraints', () => {
+  const rows = current.filter(r => r.verification_group === '官方正文');
+  assert.equal(rows.length, 2);
+  assert.deepEqual(rows.map(r => [r.area_value, r.area_unit, r.plot_ratio]), [[1.9, '公顷', '2.5'], [3.06, '公顷', '1.36']]);
+  assert.ok(rows.every(r => r.facts.includes('具体内容以出让公告为准') && r.transaction_price === null && r.winner === null));
 });

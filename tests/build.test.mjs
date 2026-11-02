@@ -42,7 +42,7 @@ test('every event has a shareable static detail and archive exclusion notice',as
       ids.push(row.id);
     }
   }
-  assert.equal(new Set(ids).size,105);
+  assert.equal(new Set(ids).size,117);
 });
 
 test('all internal page and asset links resolve in the portable output',async()=>{
@@ -55,4 +55,10 @@ test('all internal page and asset links resolve in the portable output',async()=
       if(info.isDirectory())assert.ok(await stat(resolve(path,'index.html')));
     }
   }
+});
+
+test('mixed verification levels do not claim every record is index-only',async()=>{
+ const html=await readFile(resolve(root,'index.html'),'utf8');
+ assert.ok(!html.includes('当前记录为官方索引 / 搜索缓存核验，尚未取得完整公告详情。'));
+ assert.ok(html.includes('官方正文'));
 });
