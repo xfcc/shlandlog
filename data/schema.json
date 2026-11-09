@@ -1,6 +1,6 @@
 {
   "land_events": {
-    "rows": 62,
+    "rows": 83,
     "fields": [
       "admission_status",
       "area_basis",
@@ -45,8 +45,8 @@
     "source": {
       "label": "当前第一方入库事件",
       "sourceType": "reviewed-public-source-snapshot",
-      "executedAt": "2026-11-02T01:01:56Z",
-      "period": "2026年9月基准；10月及11月1–2日续查（证据最新发布日期10月31日）",
+      "executedAt": "2026-11-09T01:10:29Z",
+      "period": "2026年9月基准；10–11月续查及历史补核（最新索引日期11月9日）",
       "timezone": "Asia/Shanghai",
       "filters": [
         "全区全用途；交易中心第一方发布/可追溯索引唯一入库",
@@ -60,13 +60,14 @@
         }
       ],
       "caveats": [
-        "官方搜索索引直开超时，检索服务返回其第一方索引缓存；仅保留标题、公告号和索引日期，不当作完整正文。",
+        "既有59条搜索缓存记录保留原核验等级；本轮官网检索分页与链接正文可读，新增21条按正文核验，不将旧记录自动升级。",
         "交易录播只证明存在交易活动，不独立证明成交及成交额。",
         "缺少第一方证据的金额、面积、竞得人、地块映射已清空；原值保留在旧版快照。",
         "没有当前收录不等于该区或该用途没有事件。",
         "本轮检索尝试至2026-10-19（上海时间），本轮取得索引证据的最新发布日期为2026-10-17；两者不等同。官网索引直开超时，土地交易、市场观察、二级市场栏目仅框架，未穷尽分页；公告详情正文未取得。未检出不表示无事件，变更、终止、二级市场等仍有覆盖缺口。",
         "本轮检索尝试至2026-10-26 09:05（上海时间），取得索引证据的最新发布日期为2026-10-23；两者不等同。新增11条中10条来自官方搜索索引缓存，1条来自可直接读取的官方录播列表；均未核验公告全文或视频成交事实。站内检索直开失败，动态栏目与分页覆盖不完整；10月18–20日及24–26日、变更、终止、二级市场等仍有覆盖缺口。未检出不表示无事件。",
-        "本轮检索尝试至2026-11-02 09:01（上海时间），取得证据的最新发布日期为2026-10-31；不代表覆盖至11月2日。新增12条中10条仅核验第一方搜索索引缓存，2条直接核验市场信息正文（用途、出让面积与容积率，具体内容以出让公告为准）；均未核验成交价格与竞得人。站内检索直开超时、分页与动态栏目不完整；10月18–20日、24–27日及11月1–2日，以及变更、终止、二级市场仍有覆盖缺口。未检出不表示无事件。"
+        "本轮检索尝试至2026-11-02 09:01（上海时间），取得证据的最新发布日期为2026-10-31；不代表覆盖至11月2日。新增12条中10条仅核验第一方搜索索引缓存，2条直接核验市场信息正文（用途、出让面积与容积率，具体内容以出让公告为准）；均未核验成交价格与竞得人。站内检索直开超时、分页与动态栏目不完整；10月18–20日、24–27日及11月1–2日，以及变更、终止、二级市场仍有覆盖缺口。未检出不表示无事件。",
+        "本轮检索尝试至2026-11-09 09:10（上海时间），取得证据的最新索引日期为2026-11-09，不声明全面覆盖。追加21条均直接核验第一方正文：本期11条公开信息节点、历史补录10条；其中11月9日转让节点回顾2025年5月21日交易，不是本期新成交。q=2026检索第1–5页及变更、终止、转让关键词首页可读，但未穷尽全部分页或所有动态栏目；10月18日、24–25日、11月1–2日及8日仍未取得对应节点，变更、终止及二级市场全量仍有覆盖缺口。未检出不表示无事件。"
       ],
       "evidenceFlow": [
         {
@@ -173,6 +174,53 @@
             "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/lsjydklb/index.jhtml"
           ],
           "result": "本轮检索尝试至2026-11-02 09:01（上海时间），取得证据的最新发布日期为2026-10-31；不代表覆盖至11月2日。新增12条中10条仅核验第一方搜索索引缓存，2条直接核验市场信息正文（用途、出让面积与容积率，具体内容以出让公告为准）；均未核验成交价格与竞得人。站内检索直开超时、分页与动态栏目不完整；10月18–20日、24–27日及11月1–2日，以及变更、终止、二级市场仍有覆盖缺口。未检出不表示无事件。"
+        },
+        {
+          "at": "2026-11-09T01:10:29Z",
+          "method": "direct first-party search pagination and linked HTML bodies",
+          "url": "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=2026",
+          "pages": [
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=2026",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search_2.jspx?q=2026",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search_3.jspx?q=2026",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search_4.jspx?q=2026",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search_5.jspx?q=2026",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=转让",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=变更",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=终止",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=2026-11-01",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=2026-11-02",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/lsjydklb/index.jhtml",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/scxx/index.jhtml"
+          ],
+          "queries": [
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ 2026-11；本期日期与10月既往缺口定向检索",
+            "第一方搜索：2026、转让、变更、终止、2026-11-01、2026-11-02"
+          ],
+          "detailURLs": [
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/wholeLife/info/0/b7135c56-ee87-4bec-9a78-888e4a251235/1",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/895bbb2db1704101a91593f30713e7c8",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/dd0747d964ef40cba7b2a2f5c3fef40b",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/wholeLife/info/0/74f9497f-f393-4a53-8617-e7647e53261e/1",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/wholeLife/info/0/e4605ba7-cdd4-408a-9cf7-c37f2aed589a/1",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/wholeLife/info/0/d8384ea0-3705-4616-be40-6dccc8ff5dd5/1",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/2335c2cbc9fd4a9ab3dfdc7199b83956",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/1125fb834844494488db10b5c49673a3",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/4c8cec6aefe644548ae1d7c84067a139",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/641ccd6ec03d46249a5deb154983cda5",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/wz/blockInfo/info/8e56760ecdb0436ba60f8ac3096daf8c",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/182cba8e8d2f442a864f60fa47ed4c4e",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/20f258d1fb4942079f4c0aa7b4604f4b",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/f8900f868f0b457e8cd99553b74ec323",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/c2e075b16bb04c6ea9f72765b1f80783",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/b78bb20ef3614176a3caa29030b0a449",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/001588b93e1b4aedb080833f6eb1dcde",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/d933b8c3e4f04d099950955ee2aedce7",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/56ccc9702e084d5c8a03e543f5812d90",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/ef0a2bb009b34172aaaaa20a9a1cadb1",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/wholeLife/info/0/970d90d2-e0f7-41c9-87c7-f24523255ffe/1"
+          ],
+          "result": "本轮检索尝试至2026-11-09 09:10（上海时间），取得证据的最新索引日期为2026-11-09，不声明全面覆盖。追加21条均直接核验第一方正文：本期11条公开信息节点、历史补录10条；其中11月9日转让节点回顾2025年5月21日交易，不是本期新成交。q=2026检索第1–5页及变更、终止、转让关键词首页可读，但未穷尽全部分页或所有动态栏目；10月18日、24–25日、11月1–2日及8日仍未取得对应节点，变更、终止及二级市场全量仍有覆盖缺口。未检出不表示无事件。"
         }
       ]
     },
@@ -192,11 +240,15 @@
       {
         "language": "text",
         "code": "保留既有50条事件、稳定ID及55条归档原样；追加12条本期发布节点。两条市场信息正文按原始单位记录面积和容积率；其余未知数值仍为null。正文与索引分级，不把同名多次发布计作多宗地。"
+      },
+      {
+        "language": "text",
+        "code": "保留既有62条事件、稳定ID与55条归档原样；追加11条本期公开节点和10条历史补录。官网直接索引链接建立第一方来源链，21条新增记录均读正文。多宗公告保留单一节点，逐宗数值写入事实，主字段不混填；拟价、起始价、成交价及既往成交分开。"
       }
     ]
   },
   "source_coverage": {
-    "rows": 21,
+    "rows": 22,
     "fields": [
       "checked_at",
       "count",
@@ -212,8 +264,8 @@
     "source": {
       "label": "唯一来源覆盖说明",
       "sourceType": "reviewed-public-source-snapshot",
-      "executedAt": "2026-11-02T01:01:56Z",
-      "period": "2026年9月基准；10月及11月1–2日续查（证据最新发布日期10月31日）",
+      "executedAt": "2026-11-09T01:10:29Z",
+      "period": "2026年9月基准；10–11月续查及历史补核（最新索引日期11月9日）",
       "timezone": "Asia/Shanghai",
       "filters": [
         "全区全用途；交易中心第一方发布/可追溯索引唯一入库",
@@ -227,14 +279,15 @@
         }
       ],
       "caveats": [
-        "官方搜索索引直开超时，检索服务返回其第一方索引缓存；仅保留标题、公告号和索引日期，不当作完整正文。",
+        "既有59条搜索缓存记录保留原核验等级；本轮官网检索分页与链接正文可读，新增21条按正文核验，不将旧记录自动升级。",
         "交易录播只证明存在交易活动，不独立证明成交及成交额。",
         "缺少第一方证据的金额、面积、竞得人、地块映射已清空；原值保留在旧版快照。",
         "没有当前收录不等于该区或该用途没有事件。",
         "本轮检索尝试至2026-10-19（上海时间），本轮取得索引证据的最新发布日期为2026-10-17；两者不等同。官网索引直开超时，土地交易、市场观察、二级市场栏目仅框架，未穷尽分页；公告详情正文未取得。未检出不表示无事件，变更、终止、二级市场等仍有覆盖缺口。",
         "交易排期API候选页面未取得其与交易事务中心官方发布体系的明确关联证据，本轮不准入；后续需先核实机构关联及来源链。",
         "本轮检索尝试至2026-10-26 09:05（上海时间），取得索引证据的最新发布日期为2026-10-23；两者不等同。新增11条中10条来自官方搜索索引缓存，1条来自可直接读取的官方录播列表；均未核验公告全文或视频成交事实。站内检索直开失败，动态栏目与分页覆盖不完整；10月18–20日及24–26日、变更、终止、二级市场等仍有覆盖缺口。未检出不表示无事件。",
-        "本轮检索尝试至2026-11-02 09:01（上海时间），取得证据的最新发布日期为2026-10-31；不代表覆盖至11月2日。新增12条中10条仅核验第一方搜索索引缓存，2条直接核验市场信息正文（用途、出让面积与容积率，具体内容以出让公告为准）；均未核验成交价格与竞得人。站内检索直开超时、分页与动态栏目不完整；10月18–20日、24–27日及11月1–2日，以及变更、终止、二级市场仍有覆盖缺口。未检出不表示无事件。"
+        "本轮检索尝试至2026-11-02 09:01（上海时间），取得证据的最新发布日期为2026-10-31；不代表覆盖至11月2日。新增12条中10条仅核验第一方搜索索引缓存，2条直接核验市场信息正文（用途、出让面积与容积率，具体内容以出让公告为准）；均未核验成交价格与竞得人。站内检索直开超时、分页与动态栏目不完整；10月18–20日、24–27日及11月1–2日，以及变更、终止、二级市场仍有覆盖缺口。未检出不表示无事件。",
+        "本轮检索尝试至2026-11-09 09:10（上海时间），取得证据的最新索引日期为2026-11-09，不声明全面覆盖。追加21条均直接核验第一方正文：本期11条公开信息节点、历史补录10条；其中11月9日转让节点回顾2025年5月21日交易，不是本期新成交。q=2026检索第1–5页及变更、终止、转让关键词首页可读，但未穷尽全部分页或所有动态栏目；10月18日、24–25日、11月1–2日及8日仍未取得对应节点，变更、终止及二级市场全量仍有覆盖缺口。未检出不表示无事件。"
       ],
       "evidenceFlow": [
         {
@@ -341,6 +394,53 @@
             "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/lsjydklb/index.jhtml"
           ],
           "result": "本轮检索尝试至2026-11-02 09:01（上海时间），取得证据的最新发布日期为2026-10-31；不代表覆盖至11月2日。新增12条中10条仅核验第一方搜索索引缓存，2条直接核验市场信息正文（用途、出让面积与容积率，具体内容以出让公告为准）；均未核验成交价格与竞得人。站内检索直开超时、分页与动态栏目不完整；10月18–20日、24–27日及11月1–2日，以及变更、终止、二级市场仍有覆盖缺口。未检出不表示无事件。"
+        },
+        {
+          "at": "2026-11-09T01:10:29Z",
+          "method": "direct first-party search pagination and linked HTML bodies",
+          "url": "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=2026",
+          "pages": [
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=2026",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search_2.jspx?q=2026",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search_3.jspx?q=2026",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search_4.jspx?q=2026",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search_5.jspx?q=2026",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=转让",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=变更",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=终止",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=2026-11-01",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/search.jspx?q=2026-11-02",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/lsjydklb/index.jhtml",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/wz/scxx/index.jhtml"
+          ],
+          "queries": [
+            "site:biz.ghzyj.sh.gov.cn/shtdsc/wz/ 2026-11；本期日期与10月既往缺口定向检索",
+            "第一方搜索：2026、转让、变更、终止、2026-11-01、2026-11-02"
+          ],
+          "detailURLs": [
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/wholeLife/info/0/b7135c56-ee87-4bec-9a78-888e4a251235/1",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/895bbb2db1704101a91593f30713e7c8",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/dd0747d964ef40cba7b2a2f5c3fef40b",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/wholeLife/info/0/74f9497f-f393-4a53-8617-e7647e53261e/1",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/wholeLife/info/0/e4605ba7-cdd4-408a-9cf7-c37f2aed589a/1",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/wholeLife/info/0/d8384ea0-3705-4616-be40-6dccc8ff5dd5/1",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/2335c2cbc9fd4a9ab3dfdc7199b83956",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/1125fb834844494488db10b5c49673a3",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/4c8cec6aefe644548ae1d7c84067a139",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/641ccd6ec03d46249a5deb154983cda5",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/wz/blockInfo/info/8e56760ecdb0436ba60f8ac3096daf8c",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/182cba8e8d2f442a864f60fa47ed4c4e",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/20f258d1fb4942079f4c0aa7b4604f4b",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/f8900f868f0b457e8cd99553b74ec323",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/c2e075b16bb04c6ea9f72765b1f80783",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/b78bb20ef3614176a3caa29030b0a449",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/001588b93e1b4aedb080833f6eb1dcde",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/d933b8c3e4f04d099950955ee2aedce7",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/56ccc9702e084d5c8a03e543f5812d90",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/notice/info/head/ef0a2bb009b34172aaaaa20a9a1cadb1",
+            "https://biz.ghzyj.sh.gov.cn/shtdsc/jy/api/wholeLife/info/0/970d90d2-e0f7-41c9-87c7-f24523255ffe/1"
+          ],
+          "result": "本轮检索尝试至2026-11-09 09:10（上海时间），取得证据的最新索引日期为2026-11-09，不声明全面覆盖。追加21条均直接核验第一方正文：本期11条公开信息节点、历史补录10条；其中11月9日转让节点回顾2025年5月21日交易，不是本期新成交。q=2026检索第1–5页及变更、终止、转让关键词首页可读，但未穷尽全部分页或所有动态栏目；10月18日、24–25日、11月1–2日及8日仍未取得对应节点，变更、终止及二级市场全量仍有覆盖缺口。未检出不表示无事件。"
         }
       ]
     },
@@ -360,6 +460,10 @@
       {
         "language": "text",
         "code": "保留既有50条事件、稳定ID及55条归档原样；追加12条本期发布节点。两条市场信息正文按原始单位记录面积和容积率；其余未知数值仍为null。正文与索引分级，不把同名多次发布计作多宗地。"
+      },
+      {
+        "language": "text",
+        "code": "保留既有62条事件、稳定ID与55条归档原样；追加11条本期公开节点和10条历史补录。官网直接索引链接建立第一方来源链，21条新增记录均读正文。多宗公告保留单一节点，逐宗数值写入事实，主字段不混填；拟价、起始价、成交价及既往成交分开。"
       }
     ]
   },
