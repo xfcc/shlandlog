@@ -42,7 +42,7 @@ test('every event has a shareable static detail and archive exclusion notice',as
       ids.push(row.id);
     }
   }
-  assert.equal(new Set(ids).size,138);
+  assert.equal(new Set(ids).size,157);
 });
 
 test('summary includes the November period instead of silently omitting new-month records', async()=>{
@@ -50,7 +50,7 @@ test('summary includes the November period instead of silently omitting new-mont
   const stats=html.match(/<section class="stats"[^>]*>([\s\S]*?)<\/section>/)[1];
   assert.ok(stats.includes('<strong>22</strong><span>9月基准</span>'));
   assert.ok(stats.includes('<strong>50</strong><span>10月衔接</span>'));
-  assert.ok(stats.includes('<strong>11</strong><span>11月续查</span>'));
+  assert.ok(stats.includes('<strong>30</strong><span>11月续查</span>'));
 });
 
 test('all internal page and asset links resolve in the portable output',async()=>{

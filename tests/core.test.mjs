@@ -7,12 +7,12 @@ const current = snapshot.queries.land_events.rows;
 const archive = snapshot.queries.unverified_leads.rows;
 const core = await import('../src/core.mjs').catch(() => null);
 
-test('weekly snapshot preserves 83 current events and 55 excluded archive rows', () => {
-  assert.equal(current.length, 83);
+test('weekly snapshot preserves 102 current events and 55 excluded archive rows', () => {
+  assert.equal(current.length, 102);
   assert.equal(archive.length, 55);
   assert.equal(current.filter(r => r.period_group === '9月基准').length, 22);
   assert.equal(current.filter(r => r.period_group === '10月衔接').length, 50);
-  assert.equal(current.filter(r => r.period_group === '11月续查').length, 11);
+  assert.equal(current.filter(r => r.period_group === '11月续查').length, 30);
   assert.ok(current.slice(0, 62).every(r => r.transaction_price === null));
   assert.ok(current.filter(r => r.reference !== '2025Z00301').every(r => r.event_start === null));
 });
@@ -65,7 +65,7 @@ test('first-party market information keeps units and textual plot-ratio constrai
 });
 
 test('single-plot result prices, proposed price and multi-plot facts remain distinct', () => {
-  const results = current.filter(r => r.category === '交易结果公示');
+  const results = current.filter(r => r.category === '交易结果公示' && r.first_recorded === '2026-11-09');
   assert.equal(results.length, 4);
   assert.deepEqual(results.map(r => r.transaction_price), [null, 1514, 10363, 655]);
   const multiple = results.find(r => r.reference === '沪告字[2026]第086号');
@@ -93,4 +93,24 @@ test('historical announcement preserves transfer area instead of substituting to
   assert.ok(row.facts.includes('土地总面积22280.90平方米'));
   assert.equal(row.starting_price, 7480);
   assert.equal(row.transaction_price, null);
+});
+
+test('November 16 additions keep results, agreements and contract observations separate', () => {
+  const added=current.filter(r=>r.first_recorded==='2026-11-16');
+  assert.equal(added.length,19);
+  assert.ok(added.every(r=>r.verification_group==='官方正文' && r.event_start===null));
+  assert.equal(added.filter(r=>r.category==='交易结果公示').length,8);
+  const multi=added.find(r=>r.reference==='沪告字[2026]第094号');
+  assert.equal(multi.transaction_price,null);
+  assert.ok(['8020.0万元','12804.0万元','743.0万元'].every(v=>multi.facts.includes(v)));
+  const supplementary=added.find(r=>r.reference==='沪浦协示字（2026）第11号');
+  assert.equal(supplementary.proposed_price,1547);
+  assert.equal(supplementary.transaction_price,null);
+  assert.ok(supplementary.facts.includes('增加地下建筑面积'));
+  const hotel=added.find(r=>r.reference==='沪浦协信示字（2026）第7号');
+  assert.equal(hotel.proposed_price,null);
+  assert.equal(hotel.event_end,'2026-12-01');
+  assert.ok(hotel.facts.includes('落款为11月11日'));
+  assert.equal(added.filter(r=>r.category==='全生命周期市场信息').length,7);
+  assert.equal(current.filter(r=>r.reference==='2025Z00301').length,1);
 });
