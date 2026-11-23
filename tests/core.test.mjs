@@ -7,12 +7,12 @@ const current = snapshot.queries.land_events.rows;
 const archive = snapshot.queries.unverified_leads.rows;
 const core = await import('../src/core.mjs').catch(() => null);
 
-test('weekly snapshot preserves 102 current events and 55 excluded archive rows', () => {
-  assert.equal(current.length, 102);
+test('weekly snapshot preserves 118 current events and 55 excluded archive rows', () => {
+  assert.equal(current.length, 118);
   assert.equal(archive.length, 55);
   assert.equal(current.filter(r => r.period_group === '9月基准').length, 22);
   assert.equal(current.filter(r => r.period_group === '10月衔接').length, 50);
-  assert.equal(current.filter(r => r.period_group === '11月续查').length, 30);
+  assert.equal(current.filter(r => r.period_group === '11月续查').length, 46);
   assert.ok(current.slice(0, 62).every(r => r.transaction_price === null));
   assert.ok(current.filter(r => r.reference !== '2025Z00301').every(r => r.event_start === null));
 });
@@ -113,4 +113,16 @@ test('November 16 additions keep results, agreements and contract observations s
   assert.ok(hotel.facts.includes('落款为11月11日'));
   assert.equal(added.filter(r=>r.category==='全生命周期市场信息').length,7);
   assert.equal(current.filter(r=>r.reference==='2025Z00301').length,1);
+});
+
+test('November 23 separates first-party preview from index-only nodes', () => {
+  const added=current.filter(r=>r.first_recorded==='2026-11-23');
+  const [preview]=added.filter(r=>r.verification_group==='官方正文');
+  const indexed=added.filter(r=>r.verification_group==='官方索引/搜索');
+  assert.equal(added.length,16);
+  assert.equal(indexed.length,15);
+  assert.deepEqual([preview.area_value, preview.area_unit, preview.plot_ratio], [5.73, '公顷', '1.7']);
+  assert.equal(indexed.filter(r=>r.category==='市场观察信息发布').length,8);
+  assert.equal(indexed.filter(r=>r.category==='交易结果公示（索引）').length,2);
+  assert.ok(indexed.every(r=>r.area_value===null && r.starting_price===null && r.transaction_price===null && r.winner===null && r.land_use===null));
 });
